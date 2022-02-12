@@ -71,3 +71,4 @@ function start() {
 }
 
 videoSource.onchange = start;
+start();
