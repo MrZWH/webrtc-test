@@ -40,12 +40,12 @@ function start() {
     const deviceId = videoSource.value
     let constrants = {
       video: {
-        width: 640,
-        height: 480,
+        // width: 640,
+        // height: 480,
         // 帧率
-        frameRater: 30,
+        // frameRater: 10,
         // 前后置摄像头 前置 user 后置 env
-        facingMode: 'enviroment',
+        facingMode: 'environment',
         deviceId: deviceId || undefined
       },
       // volume 音量 0 ~ 1
