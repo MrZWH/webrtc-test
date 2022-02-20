@@ -37,6 +37,10 @@ https_server.listen(443, '0.0.0.0')
 
 const io = socketIo.listen(https_server)
 io.sockets.on('connection', (socket) => {
+  socket.on('message', (room, data) => {
+    socket.to(room).emit('message', room, data) // 房间内所有人,除自己外
+  })
+
   socket.on('join', room => {
     socket.join(room);
     const myRoom = io.sockets.adapter.rooms[room]
@@ -58,6 +62,6 @@ io.sockets.on('connection', (socket) => {
     // socket.emit('joined', room, socket.id)
     // socket.to(room).emit('joined', room, socket.id)
     // io.in(room).emit('joined', room, socket.id)
-    socket.broadcast.emit('joined', room, socket.id)
+    socket.broadcast.emit('leaved', room, socket.id)
   })
 })
