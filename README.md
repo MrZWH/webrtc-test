@@ -47,3 +47,35 @@ Server: socket.emit('action', data1, function(arg1, arg2){...});
 Client: socket.on('action', function(data1, fn) {fn('a','b')});
 
 ## WebRTC 信令服务器
+
+## WebRTC 网络基础：P2P STUN TURN ICE
+
+- NAT ( Network Address Translator )
+- STUN ( Simple Traversal of UDP Through NAT )
+- TURN ( Traversal Using Relays around NAT )
+- ICE ( Interactive Connectivity Establishment )
+
+### 网络协议分析
+
+#### 常用工具
+
+- Linux 服务端用 tcpdump
+- 其他端 WireShark
+
+## RTCPeerConnection
+
+RTCPeerConnection 方法分类：
+
+- 媒体协商（用的什么编解码器等等）
+- Stream/Track
+- 传输相关方法
+- 统计相关方法
+
+### 重要事件
+
+- onnegotiationneeded 协商的时候触发
+- onicecandidate 当收到一个 ice 的候选者时触发
+
+## SDP
+
+SDP（ Session Description Protocol ）它只是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。

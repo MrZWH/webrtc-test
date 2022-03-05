@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webRTC PeerConnection</title>
+  </head>
+  <body>
+    <div id="preview">
+      <div>
+        <h2>local:</h2>
+        <video autoplay playsinline id="localvideo"></video>
+        <h2>Offer SDP:</h2>
+        <textarea name="" id="offer" cols="" rows=""></textarea>
+      </div>
+      <div>
+        <h2>Remote:</h2>
+        <video autoplay playsinline id="remotevideo"></video>
+        <h2>Answer SDP:</h2>
+        <textarea name="" id="answer" cols="" rows=""></textarea>
+      </div>
+      <div>
+        <button id="start">开始采集数据</button>
+        <button id="call">创建链接</button>
+        <button id="hangup">关闭连接</button>
+      </div>
+    </div>
+    <script src="https://webrtchacks.github.io/adapter/adapter-latest.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
