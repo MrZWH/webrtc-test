@@ -79,3 +79,21 @@ RTCPeerConnection 方法分类：
 ## SDP
 
 SDP（ Session Description Protocol ）它只是一种信息格式的描述标准，本身不属于传输协议，但是可以被其他传输协议用来交换必要的信息。
+
+- 会话层：基本信息意义不大
+- 媒体层：重要
+  - 媒体格式
+  - 传输协议
+  - 传输 IP 和端口
+  - 媒体负载类型
+
+rtpmap fmtp
+
+### WebRTC 中的 SDP
+
+- SDP 组成
+  - 会话元
+  - 网络描述
+  - 流描述
+  - 安全描述
+  - 服务质量
