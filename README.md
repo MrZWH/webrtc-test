@@ -71,6 +71,8 @@ RTCPeerConnection 方法分类：
 - 传输相关方法
 - 统计相关方法
 
+### Configuration
+
 ### 重要事件
 
 - onnegotiationneeded 协商的时候触发
@@ -97,3 +99,78 @@ rtpmap fmtp
   - 流描述
   - 安全描述
   - 服务质量
+
+## SUTN、TURN 服务搭建
+
+coturn 服务，github 下载
+
+## createOffer
+
+```js
+aPromise = myPeerConnection.createOffer([options]);
+```
+
+### Options 可选
+
+- iceRestart
+- voiceActivityDetection
+
+## 实战 真正的音视频传输
+
+整个直播系统的核心是信令
+
+### 客户端信令消息
+
+- join 加入房间
+- leave 离开房间
+- message 端到端消息
+  - Offer 消息
+  - Answer 消息
+  - Candidate 消息
+
+### 服务端信令消息
+
+- joined 已加入房间
+- otherjoin 其他用户加入房间
+- full 房间人数已满
+- leaved 已离开房间
+- bye 对方离开房间
+
+### 直播系统消息处理流程
+
+### 客户端状态机
+
+![客户端状态机](images/客户端状态机.png)
+
+### 客户端流程图
+
+![客户端流程图](images/客户端流程图.png)
+![客户端流程图2](images/客户端流程图2.png)
+
+### 端对端连接的基本流程
+
+![端对端连接的基本流程](images/端对端连接的基本流程.png)
+
+### 直播客户端的实现
+
+注意要点：
+
+- 网络连接要在音视频数据获取到之后，否则有可能绑定音视频流失败
+- 当一端退出房间后，另一端的 PeerConnection 要关闭重建，否则与新用户互通时媒体协商会失败。
+- 异步事件处理
+
+### 实现共享远程桌面
+
+getDisplayMedia
+
+```js
+var promise = navigator.mediaDevices.getDisplayMedia(constraints);
+```
+
+constraints 可选：里面的约束与 getUserMedia 函数中基本一致。
+
+注意要点：
+
+- getDisplayMedia 无法同时采集音频
+- 桌面是否可以调整分辨率
+- 共享整个桌面/共享某个应用/共享某块区域
